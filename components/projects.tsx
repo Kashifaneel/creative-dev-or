@@ -19,6 +19,7 @@ export function Projects() {
       liveUrl: "#contact",
       githubUrl: "#contact",
       featured: true,
+      gradient: "from-orange-600 to-orange-500",
     },
     {
       title: "Task Management App",
@@ -29,8 +30,8 @@ export function Projects() {
       liveUrl: "#contact",
       githubUrl: "#contact",
       featured: true,
+      gradient: "from-orange-500 to-orange-400",
     },
-
     {
       title: "Real Estate Platform",
       description: "Property listing platform with advanced search, virtual tours, and agent management system.",
@@ -39,8 +40,8 @@ export function Projects() {
       liveUrl: "#contact",
       githubUrl: "#contact",
       featured: false,
+      gradient: "from-orange-400 to-orange-300",
     },
-
     {
       title: "Restaurant Booking System",
       description:
@@ -50,6 +51,7 @@ export function Projects() {
       liveUrl: "#contact",
       githubUrl: "#contact",
       featured: false,
+      gradient: "from-orange-600 to-orange-400",
     },
     {
       title: "Cricket Live Score App",
@@ -60,6 +62,7 @@ export function Projects() {
       liveUrl: "#contact",
       githubUrl: "#contact",
       featured: false,
+      gradient: "from-orange-500 to-orange-300",
     },
   ]
 
@@ -72,57 +75,76 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-secondary/20">
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold font-heading mb-4">
-            Featured <span className="text-primary">Projects</span>
+          <h2 className="text-3xl sm:text-4xl font-bold font-heading mb-4 text-white">
+            Featured{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent">
+              Projects
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             A showcase of my recent work and technical capabilities
           </p>
         </div>
 
         {/* Featured Project Carousel */}
         <div className="relative mb-16">
-          <Card className="overflow-hidden">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative">
-                <img
-                  src={projects[currentProject].image || "/placeholder.svg"}
-                  alt={projects[currentProject].title}
-                  className="w-full h-64 lg:h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:hidden"></div>
-              </div>
-              <div className="p-8 flex flex-col justify-center">
-                <CardHeader className="p-0 mb-6">
-                  <CardTitle className="text-2xl font-heading mb-2">{projects[currentProject].title}</CardTitle>
-                  <p className="text-muted-foreground leading-relaxed">{projects[currentProject].description}</p>
-                </CardHeader>
-                <CardContent className="p-0 space-y-6">
-                  <div className="flex flex-wrap gap-2">
-                    {projects[currentProject].technologies.map((tech, index) => (
-                      <Badge key={index} variant="secondary">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex gap-4">
-                    <Button asChild>
-                      <a href="#contact">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Get Quote
-                      </a>
-                    </Button>
-                    <Button variant="outline" asChild>
-                      <a href="#contact">
-                        <Github className="mr-2 h-4 w-4" />
-                        Contact Me
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
+          <Card
+            className={`overflow-hidden border-4 border-transparent bg-gradient-to-r ${projects[currentProject].gradient} p-1`}
+          >
+            <div className="bg-gray-900 rounded-lg overflow-hidden">
+              <div className="grid lg:grid-cols-2">
+                <div className="relative">
+                  <img
+                    src={projects[currentProject].image || "/placeholder.svg"}
+                    alt={projects[currentProject].title}
+                    className="w-full h-64 lg:h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:hidden"></div>
+                </div>
+                <div className="p-8 flex flex-col justify-center">
+                  <CardHeader className="p-0 mb-6">
+                    <CardTitle className="text-2xl font-heading mb-2 text-white">
+                      {projects[currentProject].title}
+                    </CardTitle>
+                    <p className="text-gray-300 leading-relaxed">{projects[currentProject].description}</p>
+                  </CardHeader>
+                  <CardContent className="p-0 space-y-6">
+                    <div className="flex flex-wrap gap-2">
+                      {projects[currentProject].technologies.map((tech, index) => (
+                        <Badge
+                          key={index}
+                          className={`bg-gradient-to-r ${projects[currentProject].gradient} text-white border-0`}
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-4">
+                      <Button
+                        className={`bg-gradient-to-r ${projects[currentProject].gradient} hover:opacity-90 border-0 shadow-lg hover:shadow-xl transition-all duration-300`}
+                        asChild
+                      >
+                        <a href="#contact">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Get Quote
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className={`border-2 bg-gradient-to-r ${projects[currentProject].gradient} bg-clip-text text-transparent border-current hover:bg-gradient-to-r hover:${projects[currentProject].gradient} hover:text-white transition-all duration-300`}
+                        asChild
+                      >
+                        <a href="#contact">
+                          <Github className="mr-2 h-4 w-4" />
+                          Contact Me
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </div>
               </div>
             </div>
           </Card>
@@ -131,7 +153,7 @@ export function Projects() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/90 backdrop-blur-sm border-2 border-orange-500/50 hover:bg-orange-500/20 text-orange-400 hover:text-orange-300"
             onClick={prevProject}
           >
             <ChevronLeft className="h-4 w-4" />
@@ -139,7 +161,7 @@ export function Projects() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/90 backdrop-blur-sm border-2 border-orange-500/50 hover:bg-orange-500/20 text-orange-400 hover:text-orange-300"
             onClick={nextProject}
           >
             <ChevronRight className="h-4 w-4" />
@@ -147,11 +169,13 @@ export function Projects() {
 
           {/* Carousel Indicators */}
           <div className="flex justify-center mt-6 space-x-2">
-            {projects.map((_, index) => (
+            {projects.map((project, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentProject ? "bg-primary" : "bg-muted"
+                className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                  index === currentProject
+                    ? `bg-gradient-to-r ${project.gradient} shadow-lg`
+                    : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
                 }`}
                 onClick={() => setCurrentProject(index)}
               />
@@ -162,44 +186,67 @@ export function Projects() {
         {/* All Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                  <Button size="sm" asChild>
-                    <a href="#contact">
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
-                  <Button size="sm" variant="outline" asChild>
-                    <a href="#contact">
-                      <Github className="h-4 w-4" />
-                    </a>
-                  </Button>
+            <Card
+              key={index}
+              className={`group hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 hover:scale-105 border-2 border-gray-700 hover:border-orange-500 bg-gray-900/80 hover:bg-gradient-to-r hover:${project.gradient} hover:p-1`}
+            >
+              <div className="group-hover:bg-gray-900 group-hover:rounded-lg overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-center justify-center space-x-4`}
+                  >
+                    <Button
+                      size="sm"
+                      className="bg-black text-orange-400 hover:bg-gray-800 border border-orange-500"
+                      asChild
+                    >
+                      <a href="#contact">
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-black bg-transparent"
+                      asChild
+                    >
+                      <a href="#contact">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
+                <CardHeader>
+                  <CardTitle className="font-heading text-white">{project.title}</CardTitle>
+                  <p className="text-sm text-gray-300 line-clamp-2">{project.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-1">
+                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                      <Badge
+                        key={techIndex}
+                        variant="outline"
+                        className="text-xs border-orange-500/50 text-orange-300 hover:bg-orange-500/20 transition-colors"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <Badge
+                        variant="outline"
+                        className="text-xs border-orange-500/50 text-orange-300 hover:bg-orange-500/20 transition-colors"
+                      >
+                        +{project.technologies.length - 3}
+                      </Badge>
+                    )}
+                  </div>
+                </CardContent>
               </div>
-              <CardHeader>
-                <CardTitle className="font-heading">{project.title}</CardTitle>
-                <p className="text-sm text-muted-foreground line-clamp-2">{project.description}</p>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-1">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="outline" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <Badge variant="outline" className="text-xs">
-                      +{project.technologies.length - 3}
-                    </Badge>
-                  )}
-                </div>
-              </CardContent>
             </Card>
           ))}
         </div>
