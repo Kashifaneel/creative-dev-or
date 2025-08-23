@@ -3,11 +3,18 @@ import { ArrowRight, Download } from "lucide-react"
 
 export function Hero() {
   return (
-    <section
-      id="home"
-      className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-black via-gray-900 to-orange-950"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" className="pt-16 min-h-screen flex items-center relative overflow-hidden">
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
+        style={{
+          backgroundImage:
+            "url(https://images.pexels.com/photos/34140/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200)",
+        }}
+      ></div>
+
+      <div className="absolute inset-0 bg-black/60 z-10"></div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -59,11 +66,16 @@ export function Hero() {
 
           <div className="relative">
             <div className="relative z-10">
-              <img
-                src="https://images.pexels.com/photos/34140/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400"
-                alt="Creative Dev workspace"
-                className="rounded-2xl shadow-2xl border-4 border-orange-500"
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="rounded-2xl shadow-2xl border-4 border-orange-500 w-full h-auto"
+              >
+                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_N3xB1gEMNBQzjVznZZ8Z9PBj0RQN/shJpdcsai54waO1-Ox0q8W/public/Get%20in%20touch.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className="absolute -top-4 -right-4 w-72 h-72 bg-gradient-to-br from-orange-500/20 to-orange-300/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-4 -left-4 w-72 h-72 bg-gradient-to-br from-orange-600/20 to-orange-400/20 rounded-full blur-3xl"></div>
